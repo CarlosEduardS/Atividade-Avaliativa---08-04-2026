@@ -1,38 +1,27 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // Carrossel apenas no primeiro post
     const images = ["imgs/post1.png", "imgs/post2.png", "imgs/post3.png"];
     let index = 0;
-    const imgElement = document.getElementById("postImage");
+    const imgElement = document.querySelector(".box:first-child img"); // pega só a primeira imagem
 
     setInterval(() => {
-        index = (index + 1) % images.length; // avança e volta ao início
+        index = (index + 1) % images.length;
         imgElement.src = images[index];
-    }, 3000); // troca a cada 3 segundos
+    }, 2000);
 });
 
-dark = false;
-likes = 0;
-
-function Like() {
-    likes++;
-    document.getElementById('likes').innerText = `Likes: ${likes}`;
+// Função de Like para cada post
+function Like(button) {
+    // encontra o div pai (box) do botão clicado
+    const box = button.closest(".box");
+    // dentro desse box, pega o <span> que guarda o número de likes
+    const likeSpan = box.querySelector("span");
+    // incrementa o valor
+    let currentLikes = parseInt(likeSpan.innerText);
+    likeSpan.innerText = currentLikes + 1;
 }
 
+// Dark/Light Mode
 function Mode() {
-    document.body.classList.toggle("dark-mode");
-    dark = !dark;
-    if (dark) {
-        document.getElementsByTagName('h1')[0].style.color = '#fff';
-        document.getElementsByTagName('header')[0].classList.add('darkMode');
-        document.getElementsByTagName('header')[0].style.backgroundColor = '#444';
-        document.getElementsByTagName('div')[0].style.backgroundColor = '#555';
-        document.getElementsByTagName('h4')[0].style.color = '#fff';
-        document.body.classList.add('darkMode');
-    } else {
-        document.getElementsByTagName('h1')[0].style.color = '#333';
-        document.getElementsByTagName('header')[0].classList.remove('darkMode');
-        document.getElementsByTagName('div')[0].style.backgroundColor = '#eee';
-        document.getElementsByTagName('header')[0].style.backgroundColor = '#eee';
-        document.getElementsByTagName('h4')[0].style.color = '#333';
-        document.body.classList.remove('darkMode');
-    }
+    document.body.classList.toggle("darkMode");
 }
