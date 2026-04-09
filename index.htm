@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- titulo da pagina -->
     <title>4 vez</title>
+    <!-- definir o arquivo de estilização -->
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+    <!-- header da pagina que contera as principais informações -->
     <header>
-        <img class="ProfileIcon" src="imgs/profileIcon.png" alt="Ícone de perfil" width="40">
+        <img class="ProfileIcon" id="profileImg" src="imgs/profileIcon.png" alt="Icon" width="40">
         <h1>SocialDev</h1>
-        <button onclick="Mode()" class="primaryBtn">Dark/Light Mode</button>
+        <button onclick="Mode()" class="primaryBtn" id="Theme">Dark Mode</button>
     </header>
     <main>
         <h2>Bem-vindo ao SocialDev!</h2>
         <p>Aqui você pode compartilhar suas ideias, projetos e se conectar com outros desenvolvedores.</p>
+        <!-- Conteiner com flex para adicionar os cartôes de post de usuarios fakes -->
         <div class="conteinerBox">
             <div class="box">
+                <!-- criação do cartão (unico quem tem carrosel) -->
                 <img id="postImage" src="imgs/post1.png" alt="Imagem do post" width="150">
                 <h4 id="likes">Likes: <span id="likes">0</span></h4>
                 <button onclick="Like(this)" class="secundaryBtn">Dar Like</button>
@@ -53,6 +58,7 @@
             </div>
         </div>
     </main>
+    <!-- chamada do arquivo js -->
     <script src="script.js"></script>
 </body>
 </html>
